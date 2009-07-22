@@ -8,4 +8,4 @@ get_thingie() {
   render "you got /thingie"
 }
 
-. "lib/astley.sh"
+. "../lib/astley.sh"
