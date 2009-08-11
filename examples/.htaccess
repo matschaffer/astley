@@ -1,0 +1,16 @@
+Options ExecCGI FollowSymLinks -MultiViews
+AddHandler cgi-script .cgi
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.cgi/$1 [QSA,L]
+
+# Set up something like this in your apache config.
+# 
+# <VirtualHost *:80>
+#   ServerName astley.local
+#   DocumentRoot "/path/to/astley/examples"
+# </VirtualHost>
+# 
+# Or if the index.cgi is accessible via a path, include:
+#
+# RewriteBase "/uri/to/astley/examples"
