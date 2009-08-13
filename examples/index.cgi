@@ -1,7 +1,6 @@
 #!/bin/bash
 
 get/() {
-  send_headers
   cat <<EOF
     <html>
       <head>
@@ -17,12 +16,10 @@ EOF
 }
 
 get/thingie() {
-  send_headers
-  echo "you got /thingie"
+  render "views/testView.html"
 }
 
 post/saymyname() {
-  send_headers
   echo "you're no stranger to love `params "name"`"
 }
 
