@@ -15,3 +15,10 @@ params() {
     fi
   done
 }
+
+template() {
+  local template processed_template
+  template=`cat "$1"`
+  processed_template=`eval echo \"$template\"`
+  echo $processed_template
+}
