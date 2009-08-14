@@ -1,5 +1,5 @@
 send_headers() {
-  echo "Content-type: ${RESPONSE_CONTENT_TYPE:-text/html}"
+  echo "Content-Type: ${RESPONSE_CONTENT_TYPE:-text/html}"
   echo "Status: ${STATUS:-200}"
   echo
 }
