@@ -1,16 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>${PATH_INFO} - Not Found</title>
+    <style type="text/css">
+      body { text-align:center;font-family:helvetica,arial;font-size:18px;color:#888;margin:20px}
+      #rickroll, #explanation {margin:0 auto;width:425px;text-align:left}
+      pre { border: 1px solid #a8a0a0; background: #f8f0f0; padding: 10px; color:#666; }
+    </style>
   </head>
   <body>
-    <object width="425" height="344"><embed src="http://www.youtube.com/v/oHg5SJYRHA0&amp;hl=en&amp;fs=1&amp;autoplay=1&amp;iv_load_policy=3 " type="application/x-shockwave-flash" width="425" height="344"></embed></object>
-    <p>Perhaps you wanted something like this?</p>
-    <pre>
-      get${PATH_INFO}() {
-        echo "Hello world"
-      }
-    </pre>
+    <h2>404 - Don't tell me you're too blind to see</h2>
+    <p>But Rick's never gonna let you down</p>
+    <div id="rickroll">
+      <object type="application/x-shockwave-flash" style="width:425px; height:350px;" data="http://www.youtube.com/v/oHg5SJYRHA0&amp;autoplay=1&amp;iv_load_policy=3"></object></div>
+    <div id="explanation">
+      <p>Gotta make you understand...</p>
+      <pre>`resolve_controller_method`() {
+  echo "Never gonna give you up"
+}</pre>
+      <p>We know the game and you can play with these too.</p>
+      <pre>before_`resolve_controller_method`() { ... }</pre>
+      <pre>after_`resolve_controller_method`() { ... }</pre>
+    </div>
   </body>
 </html>

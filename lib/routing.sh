@@ -21,6 +21,7 @@ run_controller_method() {
 
 before_get/_astley/error/404() {
   STATUS=404
+  RESPONSE_CONTENT_TYPE="application/xhtml+xml; charset=utf-8"
 }
 
 get/_astley/error/404() {
