@@ -8,7 +8,7 @@ This project started with [a vision](http://twitter.com/matschaffer/status/26871
 Really?
 =======
 
-Seriously. Well maybe serious is the wrong word. Check it out for yourself if you want. You can skip the apache config if you want and try it out using rack. Just do this:
+Seriously. Well maybe serious is the wrong word. Check it out for yourself. You can skip the apache config if you want and try it out using rack. Just do this:
 
     cd examples
     rack astley.ru
