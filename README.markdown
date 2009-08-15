@@ -11,7 +11,7 @@ Really?
 Seriously. Well maybe serious is the wrong word. Check it out for yourself. You can skip the apache config if you want and try it out using rack. Just do this:
 
     cd examples
-    rack astley.ru
+    rackup astley.ru             # `gem install rack` if you need to.
     open http://localhost:9292
 
 Usage
