@@ -1,38 +1,38 @@
-createHash() {
-  local hashName assignTo index
-  hashName="$1"
+create_hash() {
+  local hash_name assign_to index
+  hash_name="$1"
   shift
 
-  assignTo="keys"
-  index=`eval echo \$\{\#${hashName}_keys[@]\}`
+  assign_to="keys"
+  index=`eval echo \$\{\#${hash_name}_keys[@]\}`
   for arg in "$@"; do
-    eval "${hashName}_${assignTo}[${index}]=\"${arg}\""
-    if [ "${assignTo}" == "keys" ]; then
-      assignTo="values"
+    eval "${hash_name}_${assign_to}[${index}]=\"${arg}\""
+    if [ "${assign_to}" == "keys" ]; then
+      assign_to="values"
     else
       let index=index+1
-      assignTo="keys"
+      assign_to="keys"
     fi
   done
 }
 
-accessHash() {
-  local i hashName hashLength currentKey
-  hashName="$1"
-  hashLength=`eval echo \$\{\#${hashName}_keys[@]\}`
-  for ((i=0;i<$hashLength;i++)); do
-    currentKey="`eval echo \$\{${hashName}_keys[$i]\}`"
-    if [ "${currentKey}" == "$2" ]; then
-      echo "`eval echo \$\{${hashName}_values[$i]\}`"
+access_hash() {
+  local i hash_name hash_length current_key
+  hash_name="$1"
+  hash_length=`eval echo \$\{\#${hash_name}_keys[@]\}`
+  for ((i=0;i<$hash_length;i++)); do
+    current_key="`eval echo \$\{${hash_name}_keys[$i]\}`"
+    if [ "${current_key}" == "$2" ]; then
+      echo "`eval echo \$\{${hash_name}_values[$i]\}`"
     fi
   done
 }
 
-addToHash() {
-  createHash "$@"
+add_to_hash() {
+  create_hash "$@"
 }
 
-destroyHash() {
+destroy_hash() {
   eval "unset $1_keys"
   eval "unset $1_values"
 }
