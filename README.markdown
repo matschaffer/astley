@@ -44,3 +44,13 @@ Rendering templates
 -------------------
 
 You can also render templates using the "render" function. This takes a file path to a template as an argument like `render "views/form.html"`. Templates are resolved as if they were inside double quoted strings, cause they are. So be careful to escape any usages of \, backticks, $ and probably other characters, or you may end up with an error. And if you want to include any variables just use `${MYVAR}` or you can use backticks to call functions. See examples `examples/views/response.html`
+
+Security
+========
+
+If you're using Astley outside a friendly network your server has already been hacked. I haven't done any serious auditing yet, but I'm pretty sure this is dangerous since URLs will get arbitrarily mapped to executables if they exist. Scary? Good.
+
+License
+=======
+
+Astley is licensed under the MIT License. See LICENSE.txt for details.
