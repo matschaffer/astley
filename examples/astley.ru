@@ -2,18 +2,18 @@ require 'open3'
 require 'pathname'
 
 module Rack
-	class CGI
-	  def initialize(script)
-	    @script = Pathname.new(script)
-	  end
+  class CGI
+    def initialize(script)
+      @script = Pathname.new(script)
+    end
 
-		def call(env)
-		  env.each { |k, v| ENV[k] = v unless k.include? 'rack' }
+    def call(env)
+      env.each { |k, v| ENV[k] = v unless k.include? 'rack' }
 
-  	  res = Response.new
-  	  Dir.chdir(@script.dirname) do
-  		  Open3.popen3("./#{@script.basename}") do |stdin, stdout, stderr|
-  		    begin
+      res = Response.new
+      Dir.chdir(@script.dirname) do
+        Open3.popen3("./#{@script.basename}") do |stdin, stdout, stderr|
+          begin
             stdin.write env['rack.input'].read
             stdin.close_write
           rescue Errno::EPIPE; end
@@ -31,12 +31,12 @@ module Rack
             line = stdout.readline
           end
 
-  		    res.write stdout.read unless stdout.closed?
-  	    end
-  	  end
-		  res.finish
-		end
-	end
+          res.write stdout.read unless stdout.closed?
+        end
+      end
+      res.finish
+    end
+  end
 end
 
 run Rack::CGI.new("index.cgi")
