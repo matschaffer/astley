@@ -3,8 +3,19 @@
     <title>A form in astley</title>
   </head>
   <body>
+    <p>Send as post:</p>
+    
     <form action="/saymyname" method="post">
-      <input type="text" name="name" /><input type="submit" value="Say it" />
+      <input type="text" name="name" />
+      <input type="submit" value="Say it" />
     </form>
+    
+    <p>Send as get on restful resource:</p>
+    
+    <form action="/name/" method="get" onsubmit="document.location = this.action + this.name.value; return false;">
+      <input type="text" name="name" />
+      <input type="submit" value="Say it restully" />
+    </form>
+
   </body>
 </html>
