@@ -1,10 +1,10 @@
 create_hash() {
-  local hash_name assign_to index
+  local arg hash_name assign_to index
   hash_name="$1"
   shift
 
   assign_to="keys"
-  index=`eval echo \$\{\#${hash_name}_keys[@]\}`
+  index=`hash_length ${hash_name}`
   for arg in "$@"; do
     eval "${hash_name}_${assign_to}[${index}]=\"${arg}\""
     if [ "${assign_to}" == "keys" ]; then
@@ -16,10 +16,14 @@ create_hash() {
   done
 }
 
+hash_length() {
+  echo `eval echo \$\{\#$1_keys[@]\}`
+}
+
 access_hash() {
   local i hash_name hash_length current_key
   hash_name="$1"
-  hash_length=`eval echo \$\{\#${hash_name}_keys[@]\}`
+  hash_length=`hash_length ${hash_name}`
   for ((i=0;i<$hash_length;i++)); do
     current_key="`eval echo \$\{${hash_name}_keys[$i]\}`"
     if [ "${current_key}" == "$2" ]; then
