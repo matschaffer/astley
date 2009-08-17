@@ -13,4 +13,24 @@ test_can_add_values_to_hashes() {
   destroy_hash myHash
 }
 
+dummy_iteration_function() {
+  local key value i
+  key="$1"
+  value="$2"
+  i="$3"
+  case $i in
+    0) assertEquals "$key" a
+       assertEquals "$value" "never gonna give you up";;
+    1) assertEquals "$key" b
+       assertEquals "$value" "never gonna let you down";;
+    *) fail;;
+  esac
+}
+
+test_can_iterate_through_hashes() {
+  create_hash myHash a "never gonna give you up" b "never gonna let you down"
+  iterate_hash myHash dummy_iteration_function
+  destroy_hash myHash
+}
+
 . testHelper.sh

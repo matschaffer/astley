@@ -39,14 +39,16 @@ match_route() {
 }
 
 resolve_matched_route() {
-  local hash_length i regex
-  hash_length=`hash_length matched_routes`
-  for ((i=0;i<$hash_length;i++)); do
-    regex="${matched_routes_keys[$i]}"
-    if echo "$1" | grep -sq -e "${regex}"; then
-      echo "${matched_routes_values[$i]}"
+  local path
+  path="$1"
+
+  mapping_matches_route() {
+    if echo "${path}" | grep -sq -e "$1"; then
+      echo "$2"
     fi
-  done
+  }
+
+  iterate_hash matched_routes mapping_matches_route
 }
 
 before_get/_astley/error/404() {

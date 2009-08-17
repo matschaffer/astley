@@ -21,14 +21,27 @@ hash_length() {
 }
 
 access_hash() {
-  local i hash_name hash_length current_key
+  local i hash_name hash_length desired_key
   hash_name="$1"
   hash_length=`hash_length ${hash_name}`
-  for ((i=0;i<$hash_length;i++)); do
-    current_key="`eval echo \$\{${hash_name}_keys[$i]\}`"
-    if [ "${current_key}" == "$2" ]; then
-      echo "`eval echo \$\{${hash_name}_values[$i]\}`"
+  desired_key="$2"
+
+  hash_key_matches() {
+    if [ "$1" == "${desired_key}" ]; then
+      echo "$2"
     fi
+  }
+
+  iterate_hash "${hash_name}" hash_key_matches
+}
+
+iterate_hash() {
+  local hash_name fn hash_length i
+  hash_name="$1"
+  fn="$2"
+  hash_length=`hash_length ${hash_name}`
+  for ((i=0;i<$hash_length;i++)); do
+    "${fn}" "`eval echo \$\{${hash_name}_keys[$i]\}`" "`eval echo \$\{${hash_name}_values[$i]\}`" $i
   done
 }
 
