@@ -1,6 +1,5 @@
 #!/bin/bash
 
-. "../lib/astley.sh"
 
 get/() {
   render views/form.html
@@ -16,6 +15,8 @@ name_resource() {
   render views/response.html
 }
 
-match_route "/name/[A-Za-z]*" name_resource
+init() {
+  match_route "/name/[A-Za-z]*" name_resource
+}
 
-route
+. "../lib/astley.sh"
