@@ -9,3 +9,5 @@ if is_valid_action "init"; then
 else
   route
 fi
+
+exit 0
