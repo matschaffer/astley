@@ -10,9 +10,10 @@ Really?
 
 Seriously. Well maybe serious is the wrong word. Check it out for yourself. You can skip the apache config if you want and try it out using rack. Just do this:
 
+    gem install rack-legacy      # or sudo if you want
     cd examples
-    rackup astley.ru             # `gem install rack` if you need to.
-    open http://localhost:9292
+    rackup
+    open http://localhost:9292   # or however you open websites
 
 Usage
 =====
@@ -32,11 +33,11 @@ And you'll probably want some of the magic included in `examples/.htaccess` to m
 Writing controller methods
 --------------------------
 
-Astley currently just tries to map REQUEST_METHOD and PATH_INFO to a command. This is usually a function, but a regular executable should work too. Of course, since the path maps directly to a command, you'll be limited to urls that are legal identifiers. Thankfully Bash supports most of the usual URL characters as identifiers.
+Astley currently just tries to map `REQUEST_METHOD` and `PATH_INFO` to a command. This is usually a function, but a regular executable should work too. Of course, since the path maps directly to a command, you'll be limited to urls that are legal identifiers. Thankfully Bash supports most of the usual URL characters as identifiers.
 
-So a GET request for "/" will map to the function `get/`. Or a POST to "/give/you/up" will try to call `post/give/you/up`.
+So a `GET` request for "/" will map to the function `get/`. Or a POST to "/give/you/up" will try to call `post/give/you/up`.
 
-Additionally you can prefix the function name with `before_` or `after_` (e.g., `before_get/`). I intended the `before_` to be used to control how headers are sent out like status and content type. Not sure what after_ would do but it's there for sake of consistency.
+Additionally you can prefix the function name with `before_` or `after_` (e.g., `before_get/`). I intended the `before_` to be used to control how headers are sent out like status and content type. Not sure what `after_` would do but it's there for sake of consistency.
 
 See `examples/index.cgi` for some examples.
 
